@@ -3,15 +3,17 @@ package app.tower;
 import app.flyables.Coordinates;
 
 public class WeatherProvider {
-	private WeatherProvider weatherProvider;
+	private static WeatherProvider weatherProvider = null;
 	private static String [] weather = {"RAIN", "FOG", "SNOW", "SUN"};
 	
-	private WeatherProvider() {
-		// Tone done
-	}
+	private WeatherProvider() {}
 
 	public static WeatherProvider getProvider() {
-		// To be done
+		if (weatherProvider == null) {
+			this.weatherProvider = WeatherProvider();
+		}
+
+		return weatherProvider;
 	}
 
 	public String getCurrentWeather(Coordinates coordinates) {
